@@ -7,5 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "bluebird": "^3.5.0",
+    "boom": "^4.3.0",
+    "guid": "0.0.12",
+    "hapi": "^16.1.0",
+    "inert": "^4.1.0",
+    "localtunnel": "^1.8.2",
+    "ngrok": "^2.2.6",
+    "querystring": "^0.2.0"
+  }
 }
