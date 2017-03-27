@@ -11,7 +11,7 @@ class Robot{
   }
   //.wav file as binary, it comming from web interface
   //we could be more strict and put all the code inside a try/ catch block, we are just
-  //assuming that everything'll be perfect :), but is just a robot
+  //assuming that everything'll be perfect :), is just a robot
   async speechToText(audioAsBinary){
     var response = await stt(audioAsBinary);  return response.data.results;
   }
