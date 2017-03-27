@@ -4,10 +4,11 @@ const boom = require("boom");
 const path = require("path");
 const ngrok = require('ngrok');
 const bluebird = require("bluebird");
-const fs = bluebird.promisifyAll(require("fs"));
+const fs = require("fs");
 const Robot = require("./Robot");
 
-const meRobot = new Robot("Cyg");
+const config = JSON.parse(fs.readFileSync("./config.json","utf8"));
+const meRobot = new Robot("Cyg", config);
 
 const port = 8080;
 const server = new hapi.Server();
@@ -42,7 +43,7 @@ ngrok.connect(port,function (err, url) {
              //handler to sucess request 
                 .then((data)=>{ return reply(data)})
                   //hanlder to error request 
-                    .catch((err)=> { return reply(err)});
+                    .catch((err)=> { console.log(err); return reply(err)});
            }
         }
       });

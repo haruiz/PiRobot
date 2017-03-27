@@ -1,27 +1,15 @@
-const axios = require("axios");
 const util = require("util");
 const Guid = require("guid");
 const querystring = require('querystring');
 const path = require("path");
 const bluebird = require("bluebird");
+const axios = require("axios");
 const fs = bluebird.promisifyAll(require("fs"));
+const {getToken} = require("./common");
 
-const API_KEY = "c2fbcee4d3a34a73a0df0192908a0548";
+const stt = async(BING_SPEECH_API_KEY, audioAsBInary)=>{
 
-const getToken = async(apikey)=>{
-    var config = {
-        headers: {'Ocp-Apim-Subscription-Key': API_KEY}
-    };
-   return axios.post("https://api.cognitive.microsoft.com/sts/v1.0/issueToken",{}, config); 
-}
-
-/*
-this function read the .wav file and then making the request to bing Speach to Text Api
-*/
-const stt = async(audioAsBInary)=>{
-
-  var authToken = await getToken(), params = "";
-
+  var authToken = await getToken(BING_SPEECH_API_KEY), params = "";
   /* URI Params. Refer to the README file for more information. */
   var params = {
     "scenarios":"smd",     
@@ -41,6 +29,7 @@ const stt = async(audioAsBInary)=>{
        "content-type" : "audio/wav; codec=\"audio/pcm\"; samplerate=16000"
      }
    }
+   
   /*var audioAsBInary = await fs.readFileAsync("./speak.wav"); */  return await axios.post(uri,audioAsBInary,config ); //just making a request 
 }
 
