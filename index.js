@@ -35,9 +35,9 @@ ngrok.connect(port,function (err, url) {
             }
         },
         handler: (request,reply)=>{
-           if(request.payload.audio){
+           if(request.payload.audio){             
              var audioAsBinary = request.payload.audio._data;
-             //we order to the robot that please, convert the audio into Text
+             //we order to the robot that please convert the audio into Text
              //for guessing the command that the user is sending, for example take a picture             
              meRobot.speechToText(audioAsBinary)
              //handler to sucess request 

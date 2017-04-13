@@ -15,12 +15,9 @@ class Robot{
 
   //assuming that everything'll be perfect :),  is just a robot
   async speechToText(audioAsBinary){    
-    var response = await stt(this.config.BING_SPEECH_API_KEY, audioAsBinary);  return response.data.results;
+    var response = await  stt(this.config.BING_SPEECH_API_KEY, audioAsBinary);  return response.data.results;
   }
-  //assuming that everything'll be perfect :), is just a robot
-  async speechToText(audioAsBinary){
-    var response = await stt(audioAsBinary);  return response.data.results;
-  }
+  
 }
 
 module.exports = Robot; //we are exporting the class Robot, to be used at the index file 

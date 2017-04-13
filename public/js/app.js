@@ -35,5 +35,5 @@ function stopRecording() {
 
 function send2Server(blob){
     console.log(blob);
-    var data = new FormData(); data.append('audio', blob); axios.post("/stt",data).then((data)=> console.log(data));    
+    var data = new FormData(); data.append('audio', blob); axios.post("/stt",data).then((response)=> console.log(response.data));    
 }
